@@ -1,25 +1,41 @@
-import React from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Card from '../components/Card';
 import colors from '../constants/colors';
+import Input from '../components/Input';
 
 const StartGameScreen = () => {
+  const [enteredValue, setEnteredValue] = useState('');
+  
+  const numberInputHandler = inputText => {
+    setEnteredValue(inputText.replace(/[^0-9]/g, ''));
+  }
+
   return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>Start a New Game!</Text>
-      <Card style={styles.inputContainer}>
-        <Text>Select a Number</Text>
-        <TextInput style={styles.input} />
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button title="Reset" onPress={() => {}} color={colors.secondary} />
+    <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss()}}>
+      <View style={styles.screen}>
+        <Text style={styles.title}>Start a New Game!</Text>
+        <Card style={styles.inputContainer}>
+          <Text>Select a Number</Text>
+          <Input 
+            style={styles.input} 
+            maxLength={2} 
+            blurOnSubmit 
+            keyboardType="number-pad" 
+            onChangeText={numberInputHandler}
+            value={enteredValue}
+          />
+          <View style={styles.buttonContainer}>
+            <View style={styles.button}>
+              <Button title="Reset" onPress={() => {}} color={colors.secondary} />
+            </View>
+            <View style={styles.button}>
+              <Button title="Confirm" onPress={() => {}} color={colors.primary} />
+            </View>
           </View>
-          <View style={styles.button}>
-            <Button title="Confirm" onPress={() => {}} color={colors.primary} />
-          </View>
-        </View>
-      </Card>
-    </View>
+        </Card>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -41,13 +57,9 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   input: {
-    width: 50,
-    height: 50,
-    padding: 5,
-    marginVertical: 20,
+    width: 55,
     textAlign: 'center',
-    backgroundColor: colors.neutral,
-    color: 'white'
+    padding: 5
   },
   buttonContainer: {
     flexDirection: 'row',
