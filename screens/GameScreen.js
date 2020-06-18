@@ -4,6 +4,7 @@ import { generateRandomBetween } from '../utils/generateRandomBetween';
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 import colors from '../constants/colors';
+import fonts from '../constants/fonts';
 
 const GameScreen = ({ userChoice, onGameOver }) => {
   const [computerGuess, setComputerGuess] = useState(generateRandomBetween(1, 100, userChoice));
@@ -40,7 +41,7 @@ const GameScreen = ({ userChoice, onGameOver }) => {
   return (
     <View style={styles.screen}>
       <Card style={styles.card}>
-        <Text>Opponent's Guess:</Text>
+        <Text style={fonts.bodyText}>Opponent's Guess:</Text>
         <NumberContainer style={styles.number}>{computerGuess}</NumberContainer>
       </Card>
       <Card style={styles.buttonContainer}>
