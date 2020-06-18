@@ -12,6 +12,7 @@ const Card = ({ children, style }) => {
 const styles = StyleSheet.create({
   card: {
     padding: 15,
+    borderRadius: 10,
     // 'shadows...' properties only work on iOS
     shadowColor: colors.neutral,
     shadowOffset: {
