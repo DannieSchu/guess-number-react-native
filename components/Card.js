@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import colors from '../constants/colors';
 
 const Card = ({ children, style }) => {
   return (
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
   card: {
     padding: 15,
     // 'shadows...' properties only work on iOS
-    shadowColor: '#A8A8A8',
+    shadowColor: colors.neutral,
     shadowOffset: {
       width: 2,
       height: 4
