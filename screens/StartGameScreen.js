@@ -62,7 +62,7 @@ const StartGameScreen = ({ onStartGame }) => {
           <Text style={fonts.title}>Start a New Game!</Text>
         </View>
         <Card style={styles.inputContainer}>
-          <Text>Enter a Number</Text>
+          <Text style={fonts.bodyText}>Enter a Number</Text>
           <Input 
             style={styles.input} 
             maxLength={2} 
